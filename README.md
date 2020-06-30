@@ -2,10 +2,10 @@
 
 Our God Fizzi created, Rollback Netcode for the beloved GameCube game 'Super Smash Bros. Melee'.
 However, will all the greatness that came there was one small flaw which was NO-MUSIC.
+
 Sadly, many people miss the Dreamland chants!
 
 There is a solution however it is not the most optimal.
-
 What RollbackMusicAlt does, is detects what stage you're playing on, and then plays the respected songs for that stage.
 
 ## Getting Started
