@@ -1,5 +1,5 @@
 import getpass
-import numpy as np
+#import numpy as np
 import cv2
 import keyboard
 import pyautogui
@@ -33,8 +33,12 @@ def main():
 
     finalImage = cv2.imread(screenshotPath)
 
+    #
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    #
+    
     config = ('-l eng --oem 1 --psm 3')
     text = pytesseract.image_to_string(finalImage, config = config)
-test
+    print(text)
 if __name__ == "__main__":
     main()
