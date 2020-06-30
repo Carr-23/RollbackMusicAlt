@@ -30,9 +30,11 @@ until finished
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [getPass](http://www.dropwizard.io/1.0.2/docs/)        - Used to get current Windows 10 user
+* [OpenCV](https://maven.apache.org/)                    - Used to edit the screenshot
+* [keyboard](https://rometools.github.io/rome/)          - Used to get user input
+* [pyautogui](https://rometools.github.io/rome/)         - Used to screenshot
+* [pytesseract](https://rometools.github.io/rome/)       - Used to convert the image to text (OCR)
 
 ## Contributing
 
