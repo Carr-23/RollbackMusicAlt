@@ -57,7 +57,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - Have a search engine for quick song search
 - Settings for adjusting Volume, Button press
 - Better UI
+- Drag and drop URL's
 - [Long Run] Remove the need for users to choose when the match starts, but instead make it automated
+
 
 ## Acknowledgments
 
