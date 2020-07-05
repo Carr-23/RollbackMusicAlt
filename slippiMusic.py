@@ -9,19 +9,27 @@ import pafy
 import vlc
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
+import time
 
+# Constant
 # Check name of user in order to choose correct path, since each computer has a different user
 checkuser = getpass.getuser()
 
 # Add the username to the path
 screenshotPath = 'C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\0Temp\\stageTest.png'
 
+# Global
 # Default stage select
 default = True
 
-# Keep running music
-stop = False
+# Sound file to stop from anywhere
+soundFile = None
+
+# Checks if the program is running
+runCode = False
+
+# Ends loop when closed
+endLoop = True
 
 def imageChanges():
     # Takes a screenshot of the current screen and saves it
@@ -56,35 +64,49 @@ def ocr(img):
 def ytSearch(searchTerm,folder):
     # Takes a text and splits each word. Searches the list and outputs the information for the video
     results = search_youtube(searchTerm.split())
+    if folder == 'DL':
+        fullStageFolder = 'Dream Land N64'
+    elif folder == 'FOD':
+        fullStageFolder = 'Fountain of Dreams'
+    elif folder == 'PS':
+        fullStageFolder = 'Pokémon Stadium'
+    elif folder == 'YS':
+        fullStageFolder = 'Yoshi\'s Story'
+    elif folder == 'FD':
+        fullStageFolder = 'Final Destination'
+    elif folder == 'BF':
+        fullStageFolder = 'Battlefield'
 
-    # Takes the ID of the video to find the proper youtube URL
-    print('https://www.youtube.com/watch?v=' + results[0]['id'])
+    # Replaces characters that isn't supported in Windows naming for files
+    for char in results[0]['name']:
+        if char in "<>:\"/\\|?*":
+            results[0]['name'] = results[0]['name'].replace(char, '')
+
+    # Takes the ID of the video to find the proper youtube URL to download
+    pafy.new('https://www.youtube.com/watch?v=' + results[0]['id']).getbestaudio().download('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\' + fullStageFolder + '\\' + results[0]['name'] + '.wav', quiet=False)
 
 def stageMusic(stage):
-    soundFile = None
-    if (not stop):
-        # If default stages are chosen, then only default songs play
-        if (default):
-             if (stage == "Dream Land N64"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\DL.wav'))
-                soundFile.play()
-             elif (stage == "Fountain of Dreams"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\FOD.wav'))
-                soundFile.play()
-             elif (stage == "Pokémon Stadium"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\PS.wav'))
-                soundFile.play()
-             elif (stage == "Yoshi\'s Story"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\YS.wav'))
-                soundFile.play()
-             elif (stage == "Final Destination"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\FD.wav'))
-                soundFile.play()
-             elif (stage == "Battlefield"):
-                soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\BF.wav'))
-                soundFile.play()
-    else:
-        soundFile.stop()
+    # If default stages are chosen, then only default songs play
+    global soundFile
+    if (default):
+            if (stage == "Dream Land N64"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\DL.wav'))
+               soundFile.play()
+            elif (stage == "Fountain of Dreams"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\FOD.wav'))
+               soundFile.play()
+            elif (stage == "Pokémon Stadium"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\PS.wav'))
+               soundFile.play()
+            elif (stage == "Yoshi\'s Story"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\YS.wav'))
+               soundFile.play()
+            elif (stage == "Final Destination"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\FD.wav'))
+               soundFile.play()
+            elif (stage == "Battlefield"):
+               soundFile = vlc.MediaPlayer(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\BF.wav'))
+               soundFile.play()
 
 def startUpCheck():
     # Try to create main folder, but if it isn't it will just pass nothing
@@ -132,7 +154,13 @@ def startUpCheck():
             pafy.new('https://www.youtube.com/watch?v=' + defaultIDS[x]).getbestaudio().download(path[x] + '\\' + acro[x] + '.wav',quiet=False)
 
 def UI():
-    print(2)
+
+    # Checks for first and second inputs to be active or not
+    firstPress = 0
+
+    # The name of the main button
+    mainButtonName = "RUN"
+
     window = tk.Tk()
     window.title("Rollback Music ALT")
     window.geometry('600x260')
@@ -144,8 +172,9 @@ def UI():
         entry.delete(0, tk.END)
 
     def enterSearch(event):
-        ytSearch(entry.get(),stageFolder.get())
-        entry.delete(0, tk.END)
+        if (entry.get() != '' and stageFolder.get() != 'Stage'):
+            ytSearch(entry.get(),stageFolder.get())
+            entry.delete(0, tk.END)
 
     def createNewWin():
         newWin = tk.Toplevel(window)
@@ -162,12 +191,17 @@ def UI():
         end.place(x=175, y=75)
 
     def musicPlayerRunner():
-        while (True):
-            keyboard.wait('space')
-            imageChanges()
-            keyboard.wait('space')
-            stop = True
-            stageMusic('bruh')
+        global runCode
+        if (runCode is False):
+            startMusicCheck.config(text="END")
+            runCode = True
+        else:
+            startMusicCheck.config(text="RUN")
+            runCode = False;
+
+    def close():
+        global endLoop
+        endLoop = False
 
     #######################################
 
@@ -194,23 +228,38 @@ def UI():
     stageDrop.place(x=505,y=7)
 
 
-
     option = Button(window,text="Options", command=createNewWin)
     option.place(x=530, y=220)
 
 
-    run = Button(window,text="RUN",height=3,width=10,command=musicPlayerRunner())
-    run.place(x=250, y=100)
+    startMusicCheck = Button(window,text=mainButtonName,height=3,width=10,command=musicPlayerRunner)
+    startMusicCheck.place(x=250, y=100)
+
 
     frame.pack()
 
-    window.mainloop()
+    window.protocol("WM_DELETE_WINDOW", close)
 
+    while True:
+        if runCode is True and keyboard.is_pressed('p'):
+            if firstPress == 0:
+                 imageChanges()
+                 firstPress = 1
+            else:
+                 soundFile.stop()
+                 firstPress = 0
+                 time.sleep(1.5)
+
+        if endLoop is True:
+            window.update()
+            window.update_idletasks()
+        else:
+            exit()
 
 if __name__ == "__main__":
     # Checks to make sure default folders and files are there
-    startUpCheck()
-    print(1)
+    #startUpCheck()
+
     # Loads up the UI menu for the program
     UI()
     keyboard.wait('space')
