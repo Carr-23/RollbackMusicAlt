@@ -18,7 +18,7 @@ import numpy as np
 checkuser = getpass.getuser()
 
 # Add the username to the path
-screenshotPath = 'C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\0Temp\\stageTest.png'
+screenshotPath = 'C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\0Temp\\stageScreenshot.png'
 
 # Global
 
@@ -52,8 +52,8 @@ playing = False
 
 def imageChanges(default):
     # Takes a screenshot of the current screen and saves it
-    #myScreenshot = pyautogui.screenshot()
-    #myScreenshot.save(screenshotPath)
+    myScreenshot = pyautogui.screenshot()
+    myScreenshot.save(screenshotPath)
 
     # Loads screenshot to img
     img = cv2.imread(screenshotPath)
@@ -73,8 +73,8 @@ def imageChanges(default):
 def gameImageChanges():
 
     # Takes a screenshot of the current screen and saves it
-    #myScreenshot = pyautogui.screenshot()
-    #myScreenshot.save(screenshotPath)
+    myScreenshot = pyautogui.screenshot()
+    myScreenshot.save(screenshotPath)
 
     img = cv2.imread(screenshotPath)
     img = cv2.resize(img, (1920, 1080))
@@ -103,8 +103,8 @@ def ocr(img,default):
     # OCR and passes the text to the stageMusic
     config = ('--oem 1 --psm 7 --psm 8 --psm 13 --psm 12')
     stage = pytesseract.image_to_string(img, lang='eng', config=config)
-    print(stage)
-    #stageMusic(stage,default)
+    #print(stage)
+    stageMusic(stage,default)
 
 def ytSearch(searchTerm,folder):
     # Takes a text and splits each word. Searches the list and outputs the information for the video
@@ -182,7 +182,7 @@ def stageMusic(stage,default):
             soundFile = vlc.MediaPlayer('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\' + random.choice(files))
         soundFile.play()
         playing = True
-    elif (stage != '' and stage == 'Game'):
+    elif (stage != '' and len(stage) >= 4 and len(stage) <= 6):
         soundFile.stop()
         playing = False
 
@@ -288,6 +288,8 @@ def UI():
 
     # The name of the main button
     mainButtonName = "RUN"
+
+    global playing
 
     window = tk.Tk()
     window.title("Rollback Music ALT")
@@ -441,19 +443,17 @@ def UI():
                 soundFile.audio_set_volume(vol.get())
         else:
             if runCode is True and playing is False:
-                imageChanges()
+                imageChanges(defCheck.get())
                 time.sleep(delay)
             elif runCode is True and playing is True:
                 gameImageChanges()
                 time.sleep(delay)
             elif runCode is True and playing is True and keyboard.is_pressed('esc'):
                 soundFile.stop()
-                global playing
                 playing = False
                 time.sleep(1.5)
             elif runCode is False and playing is True:
                 soundFile.stop()
-                global playing
                 playing = False
                 time.sleep(1.5)
 
@@ -467,13 +467,17 @@ def UI():
             configFile.write('[Description]	(T/F) 		(0<x<100)	(T/F)		(0.016<x<30)	(key)')
             exit()
 
-if __name__ == "__main__":
+
+def main():
 
     # Checks to make sure default folders and files are there
-    #startUpCheck()
+    startUpCheck()
     # Loads up the UI menu for the program
-    #UI()
-    gameImageChanges()
+    UI()
+
+if __name__ == "__main__":
+    main()
+
 
 
 
