@@ -35,6 +35,12 @@ until finished
 * [keyboard](https://rometools.github.io/rome/)          - Used to get user input
 * [pyautogui](https://rometools.github.io/rome/)         - Used to screenshot
 * [pytesseract](https://rometools.github.io/rome/)       - Used to convert the image to text (OCR)
+* [fast_youtube_search](https://rometools.github.io/rome/)       - Used to get YouTube search results
+* [os](https://rometools.github.io/rome/)       - Used to manage files
+* [pafy](https://rometools.github.io/rome/)       - Used to download YouTube Videos
+* [vlc](https://rometools.github.io/rome/)       - Used to run Music
+* [tkinter](https://rometools.github.io/rome/)       - Used to create the user interface
+* [numpy](https://rometools.github.io/rome/)       - Used for OCR image processing
 
 ## Contributing
 
