@@ -29,17 +29,17 @@ until finished
 
 ## Built With
 
-* [getPass](http://www.dropwizard.io/1.0.2/docs/)        - Used to get current Windows 10 user
-* [OpenCV](https://maven.apache.org/)                    - Used to edit the screenshot
-* [keyboard](https://rometools.github.io/rome/)          - Used to get user input
-* [pyautogui](https://rometools.github.io/rome/)         - Used to screenshot
+* [getPass](https://docs.python.org/3/library/getpass.html)        - Used to get current Windows 10 user
+* [OpenCV](https://pypi.org/project/opencv-python/)                    - Used to edit the screenshot
+* [keyboard](https://pypi.org/project/keyboard/)          - Used to get user input
+* [pyautogui](https://pypi.org/project/PyAutoGUI/)         - Used to screenshot
 * [pytesseract](https://rometools.github.io/rome/)       - Used to convert the image to text (OCR)
-* [fast_youtube_search](https://rometools.github.io/rome/)       - Used to get YouTube search results
-* [os](https://rometools.github.io/rome/)       - Used to manage files
-* [pafy](https://rometools.github.io/rome/)       - Used to download YouTube Videos
-* [vlc](https://rometools.github.io/rome/)       - Used to run Music
-* [tkinter](https://rometools.github.io/rome/)       - Used to create the user interface
-* [numpy](https://rometools.github.io/rome/)       - Used for OCR image processing
+* [fast_youtube_search](https://pypi.org/project/fast-youtube-search/)       - Used to get YouTube search results
+* [os](https://pythonprogramming.net/python-3-os-module/)       - Used to manage files
+* [pafy](https://pypi.org/project/pafy/)       - Used to download YouTube Videos
+* [vlc](https://pypi.org/project/python-vlc/)       - Used to run Music
+* [tkinter](https://tkdocs.com/tutorial/install.html)       - Used to create the user interface
+* [numpy](https://pypi.org/project/numpy/)       - Used for OCR image processing
 
 
 ## Versioning
