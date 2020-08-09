@@ -17,7 +17,6 @@ What RollbackMusicAlt does, is detects what stage you're playing on, and then pl
 ### Installing
 
 
-
 ```
 Give the example
 ```
@@ -42,31 +41,21 @@ until finished
 * [tkinter](https://rometools.github.io/rome/)       - Used to create the user interface
 * [numpy](https://rometools.github.io/rome/)       - Used for OCR image processing
 
-## Contributing
-
 
 ## Versioning
- 
+
+* 0.1 -> Launch
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Braulio Carrion Corveira** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 ## Future Builds
-- Settings for adjusting Volume, Button press
-- Better UI
+- Better UI with a custom look
 - Drag and drop URL's
-- [Long Run] Remove the need for users to choose when the match starts, but instead make it automated
+- Fix lag when changing input key
 
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Go support Fizzi at https://slippi.gg/
