@@ -48,7 +48,7 @@ until finished
 
 ## Authors
 
-* **Braulio Carrion Corveira** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Braulio Carrion Corveira** - *Computer Engineer* - Outdated Site: https://carr-23.github.io/
 
 ## Future Builds
 - Better UI with a custom look
