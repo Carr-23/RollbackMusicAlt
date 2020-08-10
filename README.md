@@ -33,7 +33,7 @@ until finished
 * [OpenCV](https://pypi.org/project/opencv-python/)                    - Used to edit the screenshot
 * [keyboard](https://pypi.org/project/keyboard/)          - Used to get user input
 * [pyautogui](https://pypi.org/project/PyAutoGUI/)         - Used to screenshot
-* [pytesseract](https://rometools.github.io/rome/)       - Used to convert the image to text (OCR)
+* [pytesseract](https://pypi.org/project/pytesseract/)       - Used to convert the image to text (OCR)
 * [fast_youtube_search](https://pypi.org/project/fast-youtube-search/)       - Used to get YouTube search results
 * [os](https://pythonprogramming.net/python-3-os-module/)       - Used to manage files
 * [pafy](https://pypi.org/project/pafy/)       - Used to download YouTube Videos
