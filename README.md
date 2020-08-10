@@ -13,6 +13,7 @@ What RollbackMusicAlt does, is detects what stage you're playing on, and then pl
 
 ### Prerequisites
 
+**Install** [VLC-64 bit](https://www.videolan.org/vlc/download-windows.html)
 
 ### Installing
 
