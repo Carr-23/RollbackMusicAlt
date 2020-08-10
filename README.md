@@ -40,6 +40,7 @@ until finished
 * [vlc](https://pypi.org/project/python-vlc/)       - Used to run Music
 * [tkinter](https://tkdocs.com/tutorial/install.html)       - Used to create the user interface
 * [numpy](https://pypi.org/project/numpy/)       - Used for OCR image processing
+* [youtube-dl](https://pypi.org/project/youtube_dl/) - Used as a part of pafy
 
 
 ## Versioning
