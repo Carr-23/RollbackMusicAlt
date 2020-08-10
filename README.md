@@ -14,6 +14,7 @@ What RollbackMusicAlt does, is detects what stage you're playing on, and then pl
 ### Prerequisites
 
 **Install** [VLC-64 bit](https://www.videolan.org/vlc/download-windows.html)
+**Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows)
 
 ### Installing
 
