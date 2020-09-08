@@ -560,7 +560,7 @@ def UI():
                 time.sleep(delay)
                 volumeStart = vol.get()
             # Kill switch using esc key
-            elif runCode and playing and keyboard.is_pressed('esc'):
+            elif runCode and playing and keyboard.is_pressed('space'):
                 soundFile.stop()
                 playing = False
                 time.sleep(1)
