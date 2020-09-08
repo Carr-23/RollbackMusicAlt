@@ -1,12 +1,14 @@
 # Rollback Music Alternative
 
 Our God Fizzi created, Rollback Netcode for the beloved GameCube game 'Super Smash Bros. Melee'.
-However, will all the greatness that came there was one small flaw which was NO-MUSIC.
+However, with all the greatness that came there was one small flaw which was NO-MUSIC.
 
 Sadly, many people miss the Dreamland chants!
 
 There is a solution however it is not the most optimal.
-What RollbackMusicAlt does, is detects what stage you're playing on, and then plays the respected songs for that stage.
+What RollbackMusicAlt does is it detects what stage you're playing on, and then plays the respected songs for that stage.
+
+P.S. this was my first time coding in Python and was the project that I used to learn the language
 
 ## Getting Started
 
@@ -44,6 +46,7 @@ until finished
 * [tkinter](https://tkdocs.com/tutorial/install.html)       - Used to create the user interface
 * [numpy](https://pypi.org/project/numpy/)       - Used for OCR image processing
 * [youtube-dl](https://pypi.org/project/youtube_dl/) - Used as a part of pafy
+* [Pillow](https://pypi.org/project/Pillow/2.2.2/) - Used to read pixel data
 
 
 ## Versioning
@@ -58,8 +61,16 @@ until finished
 - Better UI with a custom look
 - Drag and drop URL's
 - Fix lag when changing input key
+- Fix issue of no music playing even if detected (no idea how to fix as of now)
+- RollbackMusicAlt Lite, which would include only the automated process
 
+## Looking To Help Out?
+
+The main things I would need help with is optimizing the code, and creating a better User interface.
+You can contact me on my throwaway email: gone.pokemon@gmail.com
 
 ## Acknowledgments
 
-* Go support Fizzi at https://slippi.gg/
+* Go support Fizzi at slippi.gg/
+* After Supporting Fizzi, if you still want to support me you can do so at paypal.me/brauliocarr
+
