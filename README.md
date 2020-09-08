@@ -67,6 +67,6 @@ You can contact me on my throwaway email: gone.pokemon@gmail.com
 
 ## Acknowledgments
 
-* Go support Fizzi at slippi.gg/
-* After Supporting Fizzi, if you still want to support me you can do so at paypal.me/brauliocarr
+* Go support Fizzi at https://slippi.gg/
+* After Supporting Fizzi, if you still want to support me you can do so at https://paypal.me/brauliocarr
 
