@@ -6,36 +6,22 @@ from fast_youtube_search import search_youtube
 import os
 import pytesseract
 import pafy
-os.add_dll_directory(r'C:\Program Files\VideoLAN\VLC')
-#os.environ['OMP_THREAD_LIMIT'] = '1'
-import vlc
 import tkinter as tk
 from tkinter import *
 import time
 import random
 import numpy as np
-from PIL import Image
-import math
+from pygame import mixer
+mixer.init()
+
 # Constant
 # Check name of user in order to choose correct path, since each computer has a different user
 checkuser = getpass.getuser()
 
 # Add the username to the path
-screenshotPath = 'C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\0Temp\\stageScreenShot.png'
+screenshotPath = 'C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\0Temp\\stageTest.png'
 
 # Global
-
-# start time and end time
-startTime = None
-
-# Length of sound
-soundDuration = None
-
-# Sound file path
-soundFilePath = None
-
-# Sound file to stop from anywhere
-soundFile = None
 
 # Checks if the program is running
 runCode = False
@@ -64,13 +50,11 @@ playing = False
 
 def imageChanges(default):
     # Takes a screenshot of the current screen and saves it
-    myScreenshot = pyautogui.screenshot()
+    #myScreenshot = pyautogui.screenshot()
     #myScreenshot.save(screenshotPath)
 
     # Loads screenshot to img
-    #img = cv2.imread(screenshotPath)
-    open_cv_image = np.array(myScreenshot)
-    img = open_cv_image[:, :, ::-1].copy()
+    img = cv2.imread(screenshotPath)
 
     # Changes resolution of screenshot and saves it, so all monitors are supported regardless of resolution
     res = cv2.resize(img, (1920, 1080))
@@ -78,59 +62,44 @@ def imageChanges(default):
 
     # Crops screenshot so its only stage selection
     crop = img[940:1080, 660:1260]
-    ret, final1 = cv2.threshold(crop, 150, 255, cv2.THRESH_BINARY_INV)
+    cv2.imwrite(screenshotPath, crop)
 
     # Pass the final image to the OCR function to check it over
-    ocr(final1,default)
+    finalImage = cv2.imread(screenshotPath)
+    ocr(finalImage,default)
+
 def gameImageChanges():
 
     # Takes a screenshot of the current screen and saves it
     myScreenshot = pyautogui.screenshot()
-    #myScreenshot.save(screenshotPath)
+    myScreenshot.save(screenshotPath)
 
-    # Loads screenshot to img
-    #img = cv2.imread(screenshotPath)
-    open_cv_image = np.array(myScreenshot)
-    img = open_cv_image[:, :, ::-1].copy()
+    img = cv2.imread(screenshotPath)
+    img = cv2.resize(img, (1920, 1080))
+    img = img[340:640, 500:1300]
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.blur(img, (5, 5))
+    img = cv2.medianBlur(img,5)
+    img = cv2.GaussianBlur(img, (5, 5), 0)
+    img = cv2.bilateralFilter(img, 9, 75, 75)
+    kernel = np.ones((5,5),np.uint8)
+    img = cv2.dilate(img, kernel, iterations = 1)
+    img = cv2.erode(img, kernel, iterations = 1)
+    img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+    ret, img = cv2.threshold(img, 170, 255, cv2.THRESH_BINARY_INV)
 
-    # Changes resolution of screenshot and saves it, so all monitors are supported regardless of resolution
-    res = cv2.resize(img, (1920, 1080))
-    cv2.imwrite(screenshotPath, res)
+    cv2.imwrite(screenshotPath, img)
 
-    im = Image.open(screenshotPath)
-    pix = im.load()
-    # Check Pixels
-    if (pix[514,460] <= (255,255,255) and pix[514,460] >= (205,205,205) and
-    pix[666,420] <= (50,50,50) and pix[666,420] >= (0,0,0) and
-    pix[630,500] <= (98,31,36) and pix[630,500] >= (13,0,0) and
-    pix[1340,600] <= (255,194,169) and pix[1340,600] >= (223,142,117) and
-    pix[1070,550] <= (246,27,38) and pix[1070,550] >= (194,0,0)):
-        stageMusic('Game',True)
-
-    elif (pix[530,350] <= (217,209,192) and pix[530,350] >= (167,159,142) and #Grey
-    pix[610,410] <= (60,50,50) and pix[610,410] >= (10,0,0) and #Red
-    pix[415,340] <= (74,81,171) and pix[415,340] >= (24,31,121) and #Blue
-    pix[1515,320] <= (50,239,50) and pix[1480,320] >= (0,189,0) and #Green
-    pix[820,375] <= (131,98,255) and pix[820,375] >= (81,48,230) and #Purple
-    pix[820,490] <= (57,148,121) and pix[820,490] >= (7,98,71)): # Teal
-        stageMusic('EVENT',True)
-    else:
-        pass
-        #crop = res[75:115, 425:565]
-        #final = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
-        #pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
-        #config = ('--oem 1 --psm 7 --psm 8 --psm 13 --psm 12')
-        #stage1 = pytesseract.image_to_string(final, lang='eng', config=config)
-        #stage = ' '.join(stage1.split())
-        #stageMusic(stage,True)
+    # Pass the final image to the OCR function to check it over
+    ocr(cv2.imread(screenshotPath),True)
 
 def ocr(img,default):
-    # Location of tesseract,exe
+    #
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe'
     #
 
     # OCR and passes the text to the stageMusic
-    config = ('--oem 1 --psm 7')
+    config = ('--oem 1 --psm 7 --psm 8 --psm 13 --psm 12')
     stage = pytesseract.image_to_string(img, lang='eng', config=config)
     stageMusic(stage,default)
 
@@ -159,102 +128,64 @@ def ytSearch(searchTerm,folder):
     pafy.new('https://www.youtube.com/watch?v=' + results[0]['id']).getbestaudio().download('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\' + fullStageFolder + '\\' + results[0]['name'] + '.wav', quiet=True)
 
 def stageMusic(stage1,default):
-
-    def split(word):
-        return [char for char in word]
-
     # If default stages are chosen, then only default songs play
-    global soundFile
-    global soundFilePath
     global playing
-    global startTime
-
     stage = ' '.join(stage1.split())
-    stage2 = ' '.join(stage1.split())
-    #print(stage)
-    stage = stage.replace(' ','')
-    stage = stage.lower()
-    stage = split(stage)
-    if len(stage) >= math.ceil(len("Dream Land N64")*0.75) and (all(x in "dream land n64" for x in stage)) and not playing:
-        if (default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\DL.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+    if (stage == "Dream Land N64"):
+        print('bruh 0')
+        if (not default):
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\DL.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Dream Land N64\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif len(stage) >= math.ceil(len("Fountain of Dreams")*0.75) and (all(x in "fountain of dreams" for x in stage)) and not playing:
-        if (default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\FOD.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+    elif (stage == "Fountain of Dreams"):
+        if (not default):
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\FOD.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Fountain of Dreams\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif len(stage) >= math.ceil(len("Pokémon Stadium e")*0.75) and (all(x in "pokémon stadium e" for x in stage)) and not playing:
-        if (default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\PS.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+    elif (stage == "Pokémon Stadium"):
+        if (not default):
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\PS.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Pokémon Stadium\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif len(stage) >= math.ceil(len("Yoshi\'s Story")*0.75) and (all(x in "yoshi\'s story" for x in stage)) and not playing:
+    elif (stage == "Yoshi\'s Story"):
         if (not default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\YS.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\YS.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Yoshi\'s Story\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif len(stage) >= math.ceil(len("Final Destination")*0.75) and (all(x in "final destination" for x in stage)) and not playing:
-        if (default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\FD.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+    elif (stage == "Final Destination"):
+        if (not default):
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\FD.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Final Destination\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif len(stage) >= math.ceil(len("Battlefield")*0.75) and (all(x in "battlefield" for x in stage)) and not playing:
-        if (default):
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\BF.wav')
-            soundFile = vlc.MediaPlayer(soundFilePath)
+    elif (stage == "Battlefield"):
+        if (not default):
+            mixer.music.load(('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\BF.wav'))
         else:
             files = os.listdir('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield')
-            soundFilePath = ('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\' + random.choice(files))
-            soundFile = vlc.MediaPlayer(soundFilePath)
-        time.sleep(0.05)
-        soundFile.play()
-        startTime = int(round(time.time() * 1000))
+            mixer.music.load('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT\\Battlefield\\' + random.choice(files))
+        mixer.music.play(-1)
         playing = True
-    elif (stage2 == "Game") and playing:
-        soundFile.stop()
-        playing = False
-    elif (stage2 == "EVENT") and playing:
-        soundFile.stop()
+    elif playing and (stage != '' and len(stage) >= 4 and len(stage) <= 6):
+        mixer.music.stop()
         playing = False
     else:
         pass
+
 def startUpCheck():
     # Try to create main folder, but if it isn't it will just pass nothing
     try:
@@ -345,7 +276,6 @@ def startUpCheck():
     else:
         default = False
 
-#Checks to see if it is a valid float number
 def is_number(s):
     try:
         float(s)
@@ -353,17 +283,6 @@ def is_number(s):
     except ValueError:
         return False
 
-# Gets Duration of Songs
-def getDuration(path):
-    instance = vlc.Instance()
-    media = instance.media_new(path)
-    media.parse_with_options(1, 0)
-    while True:
-        if str(media.get_parsed_status()) == 'MediaParsedStatus.done':
-            break
-    return media.get_duration()
-
-# Shitty User Interface
 def UI():
 
     # Checks for first and second inputs to be active or not
@@ -374,7 +293,6 @@ def UI():
 
     global playing
 
-    # Creates default window
     window = tk.Tk()
     window.title("Rollback Music ALT")
     window.geometry('600x260')
@@ -382,39 +300,32 @@ def UI():
 
     #######################################
 
-    # Deletes Search bar when clicked
     def delSearch(event):
         if (entry.get() == 'Search'):
             entry.delete(0, tk.END)
 
-    # Wont submit the search entry if it is blank
     def reSearch(event):
         if (entry.get() == ''):
             entry.insert(0, "Search")
 
-    # Sends the search entry to download the youtube video
     def enterSearch(event):
         if (entry.get() != '' and stageFolder.get() != 'Stage'):
             ytSearch(entry.get(),stageFolder.get())
             entry.delete(0, tk.END)
 
-    # Open the specific folder in file explorer
     def openFolder():
         os.startfile('C:\\Users\\' + checkuser + '\\Documents\\Rollback Music ALT')
 
-    # Change the key for the manual function
     def changeKey():
         global keyToStart
         k = keyboard.read_key()
         if k != 'esc':
             keyToStart = k
 
-    # Creates the secondary window
     def createNewWin():
 
         ####################################
 
-        # Change delay
         def enterValue(event):
             global delay
             if (is_number(delayEntry.get()) and float(delayEntry.get()) >= 0.015 and float(delayEntry.get()) <= 30):
@@ -424,14 +335,13 @@ def UI():
                 delayEntry.delete(0, tk.END)
                 delayEntry.insert(0, str(delay))
 
-        # Change label for key to start
         def changeLabel():
             changeKey()
             start.config(text="Set Input Key [" + keyToStart +"]")
 
         ####################################
 
-        # V - User Interface - V
+
         newWin = tk.Toplevel(window)
         newWin.title("Options")
         newWin.geometry('300x150')
@@ -518,74 +428,37 @@ def UI():
     window.protocol("WM_DELETE_WINDOW", close)
 
     while True:
-        global startTime
-        global soundFilePath
-        global soundFile
-        # Manual Music Player
-        if not autoCheck.get():
-            # Checks the information using OCR to determin if the song should be played with manual start key
-            if runCode and keyboard.is_pressed(keyToStart):
+        if autoCheck.get() is False:
+            if runCode is True and keyboard.is_pressed(keyToStart):
                 if firstPress == 0:
                      imageChanges(defCheck.get())
                      firstPress = 1
-                     time.sleep(1.5)
-                     volumeStart = vol.get()
                 else:
-                     soundFile.stop()
+                     mixer.music.stop()
                      firstPress = 0
                      time.sleep(1.5)
-            # Kill switch using the main button
-            elif not runCode and firstPress == 1:
-                soundFile.stop()
+            elif runCode is False and firstPress == 1:
+                mixer.music.stop()
                 firstPress = 0
-                time.sleep(1)
-            elif runCode and firstPress == 1:
-                # Changes the volume if changed
-                if volumeStart != vol.get():
-                    soundFile.audio_set_volume(vol.get())
-                    volumeStart = vol.get()
-                # Replays the song after it is done
-                if ((int(round(time.time() * 1000))) - (startTime)) >= getDuration(soundFilePath):
-                    time.sleep(0.05)
-                    soundFile = vlc.MediaPlayer(soundFilePath)
-                    soundFile.play()
-                    startTime = int(round(time.time() * 1000))
-                    time.sleep(1.5)
-
-        # Automatic Music Player
+                time.sleep(1.5)
+            elif runCode is True and firstPress == 1:
+                mixer.music.set_volume(vol.get()/100)
         else:
-            # Checks the information using OCR to determin if the song should be played
-            if runCode and not playing:
+            if runCode is True and playing is False:
                 imageChanges(defCheck.get())
                 time.sleep(delay)
-                volumeStart = vol.get()
-            # Kill switch using esc key
-            elif runCode and playing and keyboard.is_pressed('esc'):
-                soundFile.stop()
-                playing = False
-                time.sleep(1)
-            # Changes the volume if changed
-            elif runCode and playing:
-                if volumeStart != vol.get():
-                    soundFile.audio_set_volume(vol.get())
-                    volumeStart = vol.get()
-                # Replays the song after it is done
-                if ((int(round(time.time() * 1000))) - (startTime)) >= getDuration(soundFilePath):
-                    time.sleep(0.05)
-                    soundFile = vlc.MediaPlayer(soundFilePath)
-                    soundFile.play()
-                    startTime = int(round(time.time() * 1000))
-                    time.sleep(1.5)
-                # Checks if the game is done to end the song
+            elif runCode is True and playing is True:
                 gameImageChanges()
                 time.sleep(delay)
-            # Kill switch using the main button
-            elif not runCode and playing:
-                soundFile.stop()
+            elif runCode is True and playing is True and keyboard.is_pressed('esc'):
+                mixer.music.stop()
                 playing = False
-                time.sleep(1)
+                time.sleep(1.5)
+            elif runCode is False and playing is True:
+                mixer.music.stop()
+                playing = False
+                time.sleep(1.5)
 
-        # Runs the program in loop
         if endLoop:
             window.update()
             window.update_idletasks()
@@ -595,7 +468,9 @@ def UI():
             configFile.write('[Value]		' + str(defCheck.get()) + ' 		' + str(vol.get()) + ' 		' + str(autoCheck.get()) + ' 		' + str(delay) + ' 		' + str(keyToStart) + '\n')
             configFile.write('[Description]	(T/F) 		(0<x<100)	(T/F)		(0.016<x<30)	(key)')
             break
+
 def main():
+
     # Checks to make sure default folders and files are there
     startUpCheck()
     # Loads up the UI menu for the program
@@ -603,7 +478,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Lower Case
-# Nicer UI
-# Create maybe a lite version
