@@ -12,25 +12,19 @@ P.S. this was my first time coding in Python and was the project that I used to 
 
 ## Getting Started
 
-
 ### Prerequisites
-
-**Install** [VLC-64 bit](https://www.videolan.org/vlc/download-windows.html)
-
-**Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows)
 
 ### Installing
 
+Make sure you have the following installed:
 
-```
-Give the example
-```
+**Install** [VLC - 64 bit](https://www.videolan.org/vlc/download-windows.html) inside 'C:\Program Files\VideoLAN\VLC'
 
-And repeat
+**Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows) inside 'C:\Program Files (x86)\Tesseract-OCR\'
 
-```
-until finished
-```
+**Install** [Python - 64 bit](https://www.python.org/downloads/windows/)
+
+You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0)
 
 ## Built With
 
