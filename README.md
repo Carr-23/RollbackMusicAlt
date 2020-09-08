@@ -13,24 +13,20 @@ P.S. this was my first time coding in Python and was the project that I used to 
 ## Getting Started
 
 
+## Installing
+
 ### Prerequisites
+Make sure you have the following installed:
 
-**Install** [VLC-64 bit](https://www.videolan.org/vlc/download-windows.html)
+**Install** [VLC - 64 bit](https://www.videolan.org/vlc/download-windows.html) inside 'C:\Program Files\VideoLAN\VLC'
 
-**Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows)
+**Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows) inside 'C:\Program Files (x86)\Tesseract-OCR\'
 
-### Installing
+**Install** [Python - 64 bit](https://www.python.org/downloads/windows/)
 
+### Download
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
+You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0)
 
 ## Built With
 
@@ -71,6 +67,6 @@ You can contact me on my throwaway email: gone.pokemon@gmail.com
 
 ## Acknowledgments
 
-* Go support Fizzi at slippi.gg/
-* After Supporting Fizzi, if you still want to support me you can do so at paypal.me/brauliocarr
+* Go support Fizzi at https://slippi.gg/
+* After Supporting Fizzi, if you still want to support me you can do so at https://paypal.me/brauliocarr
 
