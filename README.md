@@ -11,19 +11,19 @@ What RollbackMusicAlt does is it detects what stage you're playing on, and then 
 P.S. this was my first time coding in Python and was the project that I used to learn the language
 
 ## Getting Started
-1. Default Checkbox -> used to change between default stage music or a custom playlist
-2. Searchbar -> allows you to search for anything and it will download the first YouTube video to the corresponding stage playlist
-3. Stage Playlist Dropdown -> choose which stage playlist the YouTube video will be downloaded to
-4. Run Button -> this will start the main function of RollbackMusicAlt (for automated you can press 'space' as a kill switch also)
-5. Auto Checkbox -> used to change between manual and automated music player (automated works best)
-6. Volume Level -> allows you to change the musics volume
-7. Option Tab -> open the option window
+1. **Default Checkbox** -> used to change between default stage music or a custom playlist
+2. **Searchbar** -> allows you to search for anything and it will download the first YouTube video to the corresponding stage playlist
+3. **Stage Playlist Dropdown** -> choose which stage playlist the YouTube video will be downloaded to
+4. **Run Button** -> this will start the main function of RollbackMusicAlt (for automated you can press 'space' as a kill switch also)
+5. **Auto Checkbox** -> used to change between manual and automated music player (automated works best)
+6. **Volume Level** -> allows you to change the musics volume
+7. **Option Tab** -> open the option window
 
 ![](/images/rollbackPlayer.png)
 
-1. Open Folder -> opens the folder were everything is stored
-2. Set Input Key -> lets you set an input for the manual start function (press key to start during loading screen and press to end)
-3. Delay Input -> allows you to choose how often it checks for a change on the display (0.016 ≈ Every Frame)
+1. **Open Folder** -> opens the folder were everything is stored
+2. **Set Input Key** -> lets you set an input for the manual start function (press key to start during loading screen and press to end)
+3. **Delay Input** -> allows you to choose how often it checks for a change on the display (0.016 ≈ Every Frame)
 
 ![](/images/option.png)
 
