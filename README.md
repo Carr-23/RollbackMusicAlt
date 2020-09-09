@@ -1,12 +1,12 @@
 # Rollback Music Alternative
 
-Our God Fizzi created, Rollback Netcode for the beloved GameCube game 'Super Smash Bros. Melee'.
+Our God Fizzi created, [Rollback Netcode](https://slippi.gg/) for the beloved GameCube game 'Super Smash Bros. Melee'.
 However, with all the greatness that came there was one small flaw which was NO-MUSIC.
 
 Sadly, many people miss the Dreamland chants!
 
 There is a solution however it is not the most optimal.
-What RollbackMusicAlt does is it detects what stage you're playing on, and then plays the respected songs for that stage.
+What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0) does is it detects what stage you're playing on, and then plays the respected songs for that stage.
 
 P.S. this was my first time coding in Python and was the project that I used to learn the language
 
