@@ -20,13 +20,21 @@ Make sure you have the following installed:
 
 **Install** [VLC - 64 bit](https://www.videolan.org/vlc/download-windows.html) inside 'C:\Program Files\VideoLAN\VLC'
 
+![VLC Download](/images/vlc.png)
+
 **Install** [Tesseract-OCR](https://tesseract-ocr.github.io/tessdoc/4.0-with-LSTM.html#400-alpha-for-windows) inside 'C:\Program Files (x86)\Tesseract-OCR\'
 
+![Tesseract Download](/images/tesseract.png)
+
 **Install** [Python - 64 bit](https://www.python.org/downloads/windows/)
+
+![Python Download](/images/python.png)
 
 ### Download
 
 You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0)
+
+![RollBackMusicAlt](/images/rollback.png)
 
 ## Built With
 
