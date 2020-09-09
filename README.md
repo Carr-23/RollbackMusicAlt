@@ -12,6 +12,8 @@ P.S. this was my first time coding in Python and was the project that I used to 
 
 ## Getting Started
 
+![](/images/rollbackPlayer.png)
+![](/images/option.png)
 
 ## Installing
 
