@@ -69,7 +69,7 @@ You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/Rollba
 
 ## Versioning
 
-* 0.1 -> Launch
+* 1.0 -> Launch
 
 ## Authors
 
