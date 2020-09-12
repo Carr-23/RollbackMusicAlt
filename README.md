@@ -6,7 +6,7 @@ However, with all the greatness that came there was one small flaw which was NO-
 Sadly, many people miss the Dreamland chants!
 
 There is a solution however it is not the most optimal.
-What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0) does is it detects what stage you're playing on based on your display, and then plays the respected songs for that stage.
+What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1) does is it detects what stage you're playing on based on your display, and then plays the respected songs for that stage.
 
 P.S. this was my first time coding in Python and was the project that I used to learn the language
 
@@ -46,7 +46,7 @@ Make sure you have the following installed:
 
 ### Download
 
-You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0)
+You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
 
 ![](/images/rollback.PNG)
 
@@ -70,6 +70,7 @@ You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/Rollba
 ## Versioning
 
 * 1.0 -> Launch
+* 1.1 -> Fix Lag issue
 
 ## Authors
 
@@ -80,7 +81,6 @@ You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/Rollba
 - Drag and drop URL's
 - Fix lag when changing input key
 - Fix issue of no music playing even if detected (no idea how to fix as of now)
-- RollbackMusicAlt Lite, which would include only the automated process
 
 ## Looking To Help Out?
 
