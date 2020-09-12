@@ -8,7 +8,7 @@ Sadly, many people miss the Dreamland chants!
 There is a solution however it is not the most optimal.
 What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1) does is it detects what stage you're playing on based on your display, and then plays the respected songs for that stage.
 
-P.S. this was my first time coding in Python and was the project that I used to learn the language
+P.S. this was my first time coding in Python and was the project that I used to learn the language. Also im back to school so won't have as much time to update the code
 ## Normal vs Lite?
 
 Although both ran pretty much lag free on my computer I do have a pretty good one (i7-970, GTX1060 FTW+, 12gb of Ram).
