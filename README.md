@@ -55,7 +55,8 @@ Make sure you have the following installed:
 
 ### Download
 
-You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
+You can download V1.1 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
+You can download V1.0-Lite here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0-Lite)
 
 ![](/images/rollback.PNG)
 
@@ -78,8 +79,14 @@ You can download V1.0 here: [RollbackMusicAlt](https://github.com/Carr-23/Rollba
 
 ## Versioning
 
+# Normal
+
 * 1.0 -> Launch
 * 1.1 -> Fix Lag issue
+
+# Lite
+
+* 1.0 -> It's normal 1.1 without a UI
 
 ## Authors
 
