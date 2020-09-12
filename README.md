@@ -56,6 +56,7 @@ Make sure you have the following installed:
 ### Download
 
 You can download V1.1 here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
+
 You can download V1.0-Lite here: [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0-Lite)
 
 ![](/images/rollback.PNG)
