@@ -9,6 +9,15 @@ There is a solution however it is not the most optimal.
 What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1) does is it detects what stage you're playing on based on your display, and then plays the respected songs for that stage.
 
 P.S. this was my first time coding in Python and was the project that I used to learn the language
+## Normal vs Lite?
+
+Although both ran pretty much lag free on my computer I do have a pretty good one (i7-970, GTX1060 FTW+, 12gb of Ram).
+
+The Normal [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1) has a user-interface and a lot more feautres such as: Custom playlists, Volume Control, Manual/Automatic Switch, Delay Change, etc.
+
+However, with these added features it could theoretically slow down your gameplay (hasn't happened to me with V1.1).
+
+If your notice your computer may not be able to handle it, id suggest using [RollbackMusicAltLite](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0-Lite). This uses a lot less resouces since there are a lot less feautres that need to constantly be checked. By Default the volume may be to high for you, so you would have to manually adjust it in Volume Mixer (I could add a config file where you can change the volume by changing a text file, if requested)
 
 ## Getting Started
 
