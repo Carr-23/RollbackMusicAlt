@@ -8,6 +8,8 @@ Sadly, many people miss the Dreamland chants!
 There is a solution however it is not the most optimal.
 What [RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1) does is it detects what stage you're playing on based on your display, and then plays the respected songs for that stage.
 
+[![RollbackMusicAlt1.1](http://img.youtube.com/vi/K0HC_Tky0gM/0.jpg)](http://www.youtube.com/watch?v=K0HC_Tky0gM "RollbackMusicAlt1.1")
+
 P.S. this was my first time coding in Python and was the project that I used to learn the language. Also im back to school so won't have as much time to update the code
 ## Normal vs Lite?
 
@@ -20,6 +22,8 @@ However, with these added features it could theoretically slow down your gamepla
 If your notice your computer may not be able to handle it, id suggest using [RollbackMusicAltLite](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0-Lite). This uses a lot less resouces since there are a lot less feautres that need to constantly be checked. By Default the volume may be to high for you, so you would have to manually adjust it in Volume Mixer (I could add a config file where you can change the volume by changing a text file, if requested)
 
 ## Getting Started
+
+[![RollbackMusicAlt](http://img.youtube.com/vi/aaMaV1um4KE/0.jpg)](http://www.youtube.com/watch?v=aaMaV1um4KE "RollbackMusicAlt")
 
 ### [UI RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
 
