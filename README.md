@@ -83,7 +83,7 @@ You can download V1.0-Lite here: [RollbackMusicAlt](https://github.com/Carr-23/R
 #### Normal
 
 * 1.0 -> Launch
-* 1.1 -> Fix Lag issue
+* 1.1 -> Fixed Lag issue
 
 #### Lite
 
