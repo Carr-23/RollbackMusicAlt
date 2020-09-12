@@ -12,7 +12,7 @@ P.S. this was my first time coding in Python and was the project that I used to 
 
 ## Getting Started
 
-### UI RollbackMusicAlt
+### [UI RollbackMusicAlt](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.1)
 
 1. **Default Checkbox** -> used to change between default stage music or a custom playlist
 2. **Searchbar** -> allows you to search for anything and it will download the first YouTube video to the corresponding stage playlist
@@ -30,7 +30,7 @@ P.S. this was my first time coding in Python and was the project that I used to 
 
 ![](/images/option.png)
 
-### No UI RollbackMusicAltLite
+### [No UI RollbackMusicAltLite](https://github.com/Carr-23/RollbackMusicAlt/releases/tag/1.0-Lite)
 
 You only have to double click the .exe and once that happens this black window will appear to let you know it is running. To shut it off, just close the window.
 
