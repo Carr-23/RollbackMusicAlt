@@ -115,7 +115,7 @@ You can download V1.0-Lite here: [RollbackMusicAlt](https://github.com/Carr-23/R
 ## Looking To Help Out?
 
 The main things I would need help with is optimizing the code, and creating a better User interface.
-You can contact me on my throwaway email: gone.pokemon@gmail.com
+You can contact me at: brauliocarrion@gmail.com
 
 ## Acknowledgments
 
